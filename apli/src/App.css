@@ -1,0 +1,85 @@
+
+/* Apply styles to the App container */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 95vh; /* Take the full height of the viewport */
+}
+h3{
+  color: #650404;
+  font-size: 20px;
+  margin:3px;
+  text-align: center;
+}
+/* Apply styles to the Navbar */
+.Navbar {
+  color: #650404;
+  width: 99%;
+  font-size: 20px;
+  font-weight: bold;
+  height: 6%;
+  border-radius: 10px;
+  margin:2px;
+  padding: 5px;
+  background-color: rgb(182, 187, 151); /* Change the color as needed */
+  text-align: center;
+}
+
+/* Apply styles to the Body container */
+.Body {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Take the remaining space */
+}
+
+/* Apply styles to the MapContainer */
+.MapContainer {
+  flex: 1.3; /* Take the remaining space */
+  background-color: rgb(179, 162, 162);
+  height:98%;
+  border-radius: 10px;
+  margin:2px;
+
+}
+
+/* Apply styles to the content */
+.content {
+  display: flex;
+  flex-direction: row;
+  flex: 1; /* Take the remaining space */
+}
+
+/* Apply styles to the PieChartContainer */
+.PieChartContainer {
+  border : 1px solid black;
+  border-radius: 10px;
+  margin:2px;
+  flex: 1; /* Take half of the content height */
+  /* background-color: rgb(148, 148, 238); */
+}
+
+/* Apply styles to the BarChartContainer */
+.BarChartContainer {
+  border : 1px solid black;
+  border-radius: 10px;
+  margin:2px;
+  flex: 1; /* Take half of the content height */
+  /* background-color: rgb(239, 149, 149);  */
+}
+
+
+.PieChart {
+  position: fixe; 
+  top: 0; 
+  right: 0; 
+  width: 100%; 
+  height: 100%; 
+}
+
+.BarChart {
+  position: fixe; 
+  top: 0; 
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
