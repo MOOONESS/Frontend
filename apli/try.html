@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map with Car Positions and Trajectories</title>
+  <!-- Include Leaflet CSS and JavaScript -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="try.css">
+  <style>
+    #toggleInputButton {
+      position: absolute;
+      top: 10px; /* Adjust the top position as needed */
+      left: 10px; /* Adjust the left position as needed */
+    }
+
+    #toggleInputButton img {
+      width: 20px; /* Adjust the width as needed */
+      height: 20px; /* Adjust the height as needed */
+    }
+
+    #carInput {
+      display: none; /* Initially hide the input field */
+    }
+  </style>
+</head>
+<body>
+  <!-- Map container -->
+  <div id="map">
+    <!-- Button container -->
+    <div class="button-container">
+      <button id="toggleInputButton">
+        <img src="src/ami.png" alt="Toggle Input" />
+      </button>
+      <input type="text" id="carInput" placeholder="Enter car number (1-3)" />
+      <button id="showTrajectoryButton">Show Trajectory</button>
+    </div>
+  </div>
+  <script>
+    // Initialize Leaflet map
+    var map = L.map('map').setView([34, 9], 7); // Centered on Tunisia, zoom level 7
+
+    // Add tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Car positions
+    var carPositions = [
+      { name: 'Car 1', position: [36.8065, 10.1815], trajectory: [[36.8065, 10.1815], [37.806, 9.682], [36.5, 9.8183]] },
+      { name: 'Car 2', position: [35.6895, 10.1492], trajectory: [[35.6895, 10.1492], [35.69, 10.15], [35.691, 10.151]] },
+      { name: 'Car 3', position: [33.8869, 9.5375], trajectory: [[33.8869, 9.5375], [33.886, 9.538], [33.885, 9.539]] }
+    ];
+
+    // Add markers for car positions
+    var markers = [];
+    carPositions.forEach(car => {
+      var marker = L.marker(car.position).addTo(map).bindPopup(car.name);
+      markers.push(marker);
+    });
+
+    // Function to show trajectory for a car
+    function showTrajectory(carIndex) {
+      var car = carPositions[carIndex];
+      var trajectory = L.polyline(car.trajectory, { color: 'blue' }).addTo(map);
+    }
+
+    document.getElementById('showTrajectoryButton').addEventListener('click', function() {
+      var carIndex = parseInt(document.getElementById('carInput').value);
+      if (carIndex >= 1 && carIndex <= 3) {
+        showTrajectory(carIndex - 1);
+      } else {
+        alert('Please enter a valid car number (1, 2, or 3)');
+      }
+    });
+
+    document.getElementById('carInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        var carIndex = parseInt(document.getElementById('carInput').value);
+        if (carIndex >= 1 && carIndex <= 3) {
+          showTrajectory(carIndex - 1);
+        } else {
+          alert('Please enter a valid car number (1, 2, or 3)');
+        }
+      }
+    });
+
+    // Toggle visibility of input field and trajectory button
+document.getElementById('toggleInputButton').addEventListener('click', function() {
+  var inputField = document.getElementById('carInput');
+  var trajectoryButton = document.getElementById('showTrajectoryButton');
+  if (inputField.style.display === 'none') {
+    inputField.style.display = 'inline-block';
+    trajectoryButton.style.display = 'inline-block'; // Show the trajectory button
+  } else {
+    inputField.style.display = 'none';
+    trajectoryButton.style.display = 'none'; // Hide the trajectory button
+  }
+});
+
+  </script>
+</body>
+</html>
