@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-// import BarChart from "./BarChart";
-import PieChart from "./PieChart";
-import Map from "./Map";
+import Navbar from "./components/Navbar";
+// import BarChart from "./components/BarChart";
+import PieChart from "./components/PieChart";
+import Map from "./components/Map";
 import "./App.css";
-import LineChart from "./LineChart";
+import LineChart from "./components/LineChart";
 function App() {
   const [drones, setDrones] = useState([]);
   useEffect(() => {
@@ -46,12 +46,12 @@ function App() {
             <Map drones={drones}  />
           </div>
           <div className="PieChartContainer">
-            <h3>The percentage of friends compared to enemies</h3>
+            <h3>friends % foes </h3>
             <PieChart drones={drones} />
           </div>
         </div>
         <div className="LineChartContainer">
-          <h3>LineChart</h3>
+          <h3>Friend or Foe detected by the id</h3>
           <LineChart drones={drones} />
         </div>
       </div>
@@ -60,3 +60,4 @@ function App() {
 }
 
 export default App;
+

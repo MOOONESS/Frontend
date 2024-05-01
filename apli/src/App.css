@@ -49,7 +49,7 @@ h3{
 .content {
   display: flex;
   flex-direction: row;
-  flex: 2.2; /* Take the remaining space */
+  flex: 1.5; /* Take the remaining space */
 }
 
 /* Apply styles to the PieChartContainer */
@@ -63,7 +63,7 @@ h3{
 }
 
 /* Apply styles to the BarChartContainer */
-.LineChartContainer {
+.LineChartContainer , .BarChartContainer {
   border : 1px solid black;
   border-radius: 10px;
   margin:2px;
@@ -72,28 +72,28 @@ h3{
 }
 
 
+
 .button-container {
   position: absolute;
-  top: 10px;
+  top: 75px;
   left: 10px;
+  cursor: pointer;
   z-index: 1000; /* Ensure the buttons appear above the map */
 }
 
 #toggleInputButton {
+  border-radius: 11%;
   padding: 0;
-  background-color: rgb(127, 125, 125);
+  background-color: pink;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 #toggleInputButton img {
   width: 30px; /* Adjust the width as needed */
-  height: 30px; /* Adjust the height as needed */
-}
-
-#carInput {
-  margin-top: 5px; /* Adjust the top margin as needed */
+  /* height: 110%; Adjust the height as needed */
 }
 
 #showTrajectoryButton {
-  margin-top: 5px; /* Adjust the top margin as needed */
+  cursor: pointer;
 }

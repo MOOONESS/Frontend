@@ -11,7 +11,7 @@ function PieChart({drones}) {
   const hostileCount = new Set(drones.filter(drone => drone.nature === 'hostile').map(drone => drone.numero)).size;
 
   const data = {
-    labels: ['Ami', 'Hostile'],
+    labels: ['friend', 'foe'],
     datasets: [{
       data: [amiCount, hostileCount],
       backgroundColor: ['#87CEEB', '#8B0000'], // Light blue for ami and dark red for hostile

@@ -2,10 +2,13 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import amiIconUrl from './ami.png'; // Import custom ami icon
-import hostileIconUrl from './hostile.png'; // Import custom hostile icon
+import amiIconUrl from '../images/ami.png'; // Import custom ami icon
+import hostileIconUrl from '../images/hostile.png'; // Import custom hostile icon
+import Trajectory from './Trajectory';
 
 function Map({ drones }) {
+
+
   // Define custom drone icon for each type
   const droneIcons = {
     ami: L.icon({
@@ -24,7 +27,7 @@ function Map({ drones }) {
     <div className='MapContainer'>
       <MapContainer
         center={[36.55, 9.5]}
-        zoom={9}
+        zoom={8}
         style={{ width: '100%', height: '100%' }}
       >
         <TileLayer
@@ -32,7 +35,14 @@ function Map({ drones }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        {drones.filter(drone => drone.pos === drone.maxpos).map(drone => (
+        {drones.filter(drone => {
+    // Calculate the maximum maxpos for drones with the same 'numero'
+    const maxpos = Math.max(
+        ...drones.filter(d => d.numero === drone.numero).map(d => d.pos)
+    );
+    // Filter drones where pos is equal to the maximum maxpos
+    return drone.pos === maxpos;
+}).map(drone => (
           <Marker
             key={drone.id}
             position={[drone.latitude, drone.longitude]}
@@ -48,7 +58,9 @@ function Map({ drones }) {
             </Popup>
           </Marker>
         ))}
+        <Trajectory />
       </MapContainer>
+      
     </div>
   );
 }

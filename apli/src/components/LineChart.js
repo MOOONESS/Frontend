@@ -13,7 +13,7 @@ function LineChart({drones}) {
     labels: Array.from(new Set(drones.map(drone => drone.id))), // X-axis: labels for Line chart
     datasets: [
       {
-        label: 'Drone number',
+        label: 'Drone type:',
         data: dataValues, // Y-axis: numerical data for Line chart
       },
     ],
@@ -21,11 +21,29 @@ function LineChart({drones}) {
 
   const options = {
     scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Drones Id',
+          color: 'red', // Change x-label color
+          font: {
+            weight: 'bold', // Change x-label font weight
+          },
+        },
+      },
       y: {
         ticks: {
           callback: function(value, index, values) {
             return value === 0 ? 'ami' : (value === 1 ? 'hostile' : '');
           }
+        },
+        title: {
+          display: true,
+          text: 'Drones type',
+          color: 'blue', // Change x-label color
+          font: {
+            weight: 'bold', // Change x-label font weight
+          },
         }
       }
     },
@@ -51,7 +69,7 @@ function LineChart({drones}) {
   };
 
   return (
-    <div style={{width: 865 , height:"80%"}}>
+    <div style={{width: 865 , height:"67%"}}>
       <Line data={userData} options={options} />
     </div>
   );
