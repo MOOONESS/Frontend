@@ -51,7 +51,7 @@ function App() {
           </div>
         </div>
         <div className="LineChartContainer">
-          <h3>Friend or Foe detected by the id</h3>
+          <h3>Friend or Foe detected by id</h3>
           <LineChart drones={drones} />
         </div>
       </div>
