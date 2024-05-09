@@ -1,0 +1,49 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../images/back.webp'); /* Update this path if your image path is different */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.login-form {
+    padding: 2rem;
+    background: transparent;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    height: 20px;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button {
+    height: 40px;
+    background-color: transparent;
+    color: red;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #003580;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #790000;
+    text-align: center;
+}
