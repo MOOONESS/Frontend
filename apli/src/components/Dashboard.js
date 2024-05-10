@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 // import BarChart from "./components/BarChart";
 import PieChart from "./PieChart";
 import Map from "./Map";
-import "./App.css";
+import "./Dashboard.css";
 import LineChart from "./LineChart";
 function Dashboard() {
   const [drones, setDrones] = useState([]);

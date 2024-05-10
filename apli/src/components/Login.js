@@ -14,14 +14,14 @@ function Login({ setLoggedIn, setIsAdmin }) {
             setLoggedIn(true);
             setIsAdmin(true);   // It's an admin
         } else {
-            alert('Invalid credentials');
+            alert('ERROR BRO!');
         }
     };
 
     return (
         <div className="login-container">
             <form className="login-form" onSubmit={handleLogin}>
-                <h2>Login</h2>
+                <h2>Dashboard</h2>
                 <input
                     type="text"
                     placeholder="Username"
